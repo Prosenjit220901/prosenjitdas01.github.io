@@ -16,454 +16,404 @@
   <meta property="og:title" content="Prosenjit Das">
   <meta property="og:description" content="Electronics & Communication Engineering Student | ML & Data Science">
 
-  <meta name="theme-color" content="#33564E">
+  <meta name="theme-color" content="#2962ff">
 
   <!-- CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
 
-  <style>
-    :root {
-      --ink: #1E2A2E;
-      --muted: #5B6660;
-      --paper: #FBF9F5;
-      --paper-shade: #F1EDE4;
-      --line: #DBD4C4;
-      --accent: #33564E;
-      --accent-soft: #E1E9E4;
-      --gold: #96702D;
-      --gold-soft: #F1E7D4;
-      --max: 720px;
-      font-size: 17px;
-    }
-
-    * { box-sizing: border-box; }
-
-    html, body {
-      margin: 0;
-      padding: 0;
-      background: var(--paper);
-      color: var(--ink);
-      font-family: 'Inter', -apple-system, sans-serif;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-
-    h1, h2, h3 {
-      font-family: 'Source Serif 4', Georgia, serif;
-      color: var(--ink);
-      margin: 0;
-      font-weight: 600;
-    }
-
-    img { max-width: 100%; }
-
-    /* ---------- Layout shell ---------- */
-    .shell {
-      display: grid;
-      grid-template-columns: 300px 1fr;
-      max-width: 1180px;
-      margin: 0 auto;
-      align-items: start;
-    }
-
-    /* ---------- Sidebar ---------- */
-    .sidebar {
-      position: sticky;
-      top: 0;
-      height: 100vh;
-      background: var(--paper-shade);
-      border-right: 1px solid var(--line);
-      padding: 2.5rem 2rem;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .avatar-wrap {
-      width: 108px;
-      height: 108px;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      margin-bottom: 1.25rem;
-      background: var(--accent);
-      position: relative;
-    }
-
-    .avatar-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; position: relative; z-index: 1; }
-
-    .avatar-fallback {
-      position: absolute; inset: 0;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--paper);
-      font-family: 'Source Serif 4', serif;
-      font-size: 2rem; font-weight: 600;
-    }
-
-    .sidebar h1 { font-size: 1.65rem; line-height: 1.2; }
-    .sidebar .role { color: var(--muted); font-size: 0.92rem; margin-top: 0.35rem; }
-    .sidebar .affil { font-size: 0.92rem; margin-top: 0.15rem; }
-    .sidebar .affil a { color: var(--ink); font-weight: 500; }
-
-    .sidebar-block { margin-top: 1.75rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
-    .sidebar-block h3 {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--muted);
-      letter-spacing: 0.02em;
-      margin-bottom: 0.7rem;
-    }
-
-    .contact-line { display: flex; gap: 0.55rem; font-size: 0.88rem; margin-bottom: 0.5rem; color: var(--ink); }
-    .contact-line i { color: var(--accent); width: 1.1rem; margin-top: 0.2rem; flex-shrink: 0; }
-
-    .icon-row { display: flex; gap: 0.6rem; flex-wrap: wrap; }
-    .icon-row a {
-      width: 2.1rem; height: 2.1rem;
-      border: 1px solid var(--line);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--accent);
-      font-size: 0.92rem;
-      background: var(--paper);
-    }
-    .icon-row a:hover { background: var(--accent); color: var(--paper); text-decoration: none; border-color: var(--accent); }
-
-    .cv-link {
-      display: inline-flex; align-items: center; gap: 0.45rem;
-      font-size: 0.88rem; font-weight: 500;
-      color: var(--paper); background: var(--accent);
-      padding: 0.5rem 0.85rem; border-radius: 3px;
-      margin-top: 0.75rem;
-    }
-    .cv-link:hover { text-decoration: none; opacity: 0.9; }
-
-    nav.sidebar-nav { margin-top: auto; padding-top: 1.5rem; }
-    nav.sidebar-nav ul { list-style: none; margin: 0; padding: 0; }
-    nav.sidebar-nav li a {
-      display: block; padding: 0.35rem 0; color: var(--muted); font-size: 0.9rem; font-weight: 500;
-    }
-    nav.sidebar-nav li a:hover { color: var(--accent); text-decoration: none; }
-
-    /* ---------- Main content ---------- */
-    main { padding: 3.5rem 3rem 5rem; min-width: 0; }
-    .home-section { margin-bottom: 4rem; scroll-margin-top: 1rem; }
-    .home-section > h1 {
-      font-size: 1.65rem;
-      margin-bottom: 1.5rem;
-      padding-bottom: 0.7rem;
-      border-bottom: 1px solid var(--line);
-    }
-
-    #about p.bio { max-width: var(--max); color: var(--ink); }
-
-    /* ---------- Publications ---------- */
-    .pub-group { margin-bottom: 2.25rem; }
-    .pub-group h3 {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--accent);
-      margin-bottom: 1rem;
-    }
-    .ul-papers { list-style: none; margin: 0; padding: 0; counter-reset: pub; }
-    .ul-papers > li {
-      counter-increment: pub;
-      position: relative;
-      padding-left: 2rem;
-      margin-bottom: 1.4rem;
-      max-width: var(--max);
-    }
-    .ul-papers > li::before {
-      content: "[" counter(pub) "]";
-      position: absolute;
-      left: 0;
-      top: 0.1rem;
-      font-size: 0.82rem;
-      color: var(--muted);
-      font-family: 'Source Serif 4', serif;
-    }
-    .pub-group + .pub-group .ul-papers { counter-reset: pub; }
-
-    .title { font-weight: 600; margin: 0 0 0.25rem; line-height: 1.4; }
-    .authors { margin: 0 0 0.2rem; font-size: 0.92rem; color: var(--ink); }
-    .venue { margin: 0 0 0.15rem; font-size: 0.88rem; color: var(--muted); font-style: italic; }
-    .resources { margin: 0.35rem 0 0; font-size: 0.85rem; }
-    .status { font-size: 0.88rem; color: var(--muted); margin-top: 0.15rem; }
-
-    .under-review, .submitted {
-      display: inline-block;
-      font-size: 0.78rem;
-      font-weight: 600;
-      padding: 0.1rem 0.55rem;
-      border-radius: 999px;
-      margin-left: 0.1rem;
-    }
-    .under-review { background: var(--paper); border: 1px solid var(--line); color: var(--muted); }
-    .submitted { background: var(--accent-soft); color: var(--accent); }
-
-    /* ---------- Skills / Awards ---------- */
-    .wg-blank ul { list-style: none; margin: 0; padding: 0; max-width: var(--max); }
-    .wg-blank li {
-      padding: 0.9rem 0;
-      border-bottom: 1px solid var(--line);
-      font-size: 0.95rem;
-    }
-    .wg-blank li:last-child { border-bottom: none; }
-    .wg-blank li strong { font-weight: 600; }
-
-    /* ---------- Footer ---------- */
-    footer.site-footer {
-      grid-column: 1 / -1;
-      text-align: center;
-      padding: 2rem 0;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 0.85rem;
-    }
-
-    /* ---------- Mobile nav toggle (hidden desktop) ---------- */
-    #mobile-toggle { display: none; }
-
-    /* ---------- Responsive ---------- */
-    @media (max-width: 860px) {
-      .shell { grid-template-columns: 1fr; }
-      .sidebar { position: relative; height: auto; border-right: none; border-bottom: 1px solid var(--line); }
-      nav.sidebar-nav { margin-top: 1.75rem; }
-      nav.sidebar-nav ul { display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; }
-      nav.sidebar-nav li a { padding: 0.2rem 0; }
-      main { padding: 2.5rem 1.5rem 3.5rem; }
-    }
-
-    @media (prefers-reduced-motion: no-preference) {
-      .icon-row a, .cv-link { transition: background 0.15s ease, color 0.15s ease, opacity 0.15s ease; }
-    }
-  </style>
+  <!-- Academic CSS -->
+  <link rel="stylesheet" href="./css/academic.css">
 </head>
 
 <body id="top">
 
-  <div class="shell">
+  <!-- ================== NAVBAR ================== -->
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container">
+      <a class="navbar-brand" href="./">Prosenjit Das</a>
 
-    <!-- ================== SIDEBAR ================== -->
-    <aside class="sidebar">
-      <div class="avatar-wrap">
-        <span class="avatar-fallback">PD</span>
-        <img src="./authors/admin/PROSENJIT.jpg" alt="Prosenjit Das" onerror="this.style.display='none'">
-      </div>
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-content">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
 
-      <h1>Prosenjit Das</h1>
-      <p class="role">Undergraduate Student</p>
-      <p class="affil"><a href="https://ku.ac.bd" target="_blank">Khulna University</a></p>
-
-      <div class="sidebar-block">
-        <h3>Contact</h3>
-        <div class="contact-line"><i class="fas fa-envelope"></i><span>prosenjitdas0929@gmail.com</span></div>
-        <div class="contact-line"><i class="fas fa-map-marker-alt"></i><span>Khulna University, Khulna-9208, Bangladesh</span></div>
-      </div>
-
-      <div class="sidebar-block">
-        <h3>Elsewhere</h3>
-        <div class="icon-row">
-          <a href="https://scholar.google.com/citations?user=oZp9aysAAAAJ&hl=en" target="_blank" title="Google Scholar" aria-label="Google Scholar"><i class="ai ai-google-scholar"></i></a>
-          <a href="https://www.researchgate.net/profile/Prosenjit-Das-14" target="_blank" title="ResearchGate" aria-label="ResearchGate"><i class="fab fa-researchgate"></i></a>
-          <a href="https://www.linkedin.com/in/prosenjit-das-83007b252/" target="_blank" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-          <a href="https://orcid.org/0009-0006-7391-6134" target="_blank" title="ORCID" aria-label="ORCID"><i class="fa fa-id-badge"></i></a>
-        </div>
-        <a class="cv-link" href="authors/cv/Prosenjit%20Das%20(20%20January%2C%202026).pdf"><i class="fas fa-file-pdf"></i> Download CV</a>
-      </div>
-
-      <nav class="sidebar-nav" aria-label="Section navigation">
-        <ul>
-          <li><a href="#top">Home</a></li>
-          <li><a href="#papers">Publications</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#awards">Awards</a></li>
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+        <ul class="navbar-nav d-md-inline-flex">
+          <li class="nav-item"><a class="nav-link" href="./#about">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="./#papers">Publications</a></li>
+          <li class="nav-item"><a class="nav-link" href="./#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="./#awards">Awards</a></li>
         </ul>
-      </nav>
-    </aside>
+      </div>
+    </div>
+  </nav>
 
-    <!-- ================== MAIN ================== -->
-    <main>
+  <!-- ================== ABOUT ================== -->
+  <section id="about" class="home-section wg-about card-section">
+    <div class="container">
+      <div class="about-card">
+        <div class="row">
 
-      <!-- ABOUT -->
-      <section id="about" class="home-section">
-        <h1>About</h1>
-        <p class="bio">
-          I am a final-year Electronics & Communication Engineering Discipline student at
-          <a href="https://ku.ac.bd" target="_blank">Khulna University</a>, Bangladesh. My interests lie in
-          Machine Learning and Artificial Intelligence, with a focus on healthcare applications. I am currently
-          developing my skills in Vision Transformers, Large Language Models, and Explainable AI.
-        </p>
-      </section>
+          <!-- PROFILE -->
+          <div class="col-12 col-lg-4">
+            <div id="profile">
+              <img class="avatar avatar-circle" src="./authors/admin/PROSENJIT.jpg" alt="Avatar">
 
-      <!-- PUBLICATIONS -->
-      <section id="papers" class="home-section">
-        <h1>Publications</h1>
+              <div class="portrait-title">
+                <h2>Prosenjit Das</h2>
+                <h3>Undergraduate Student</h3>
+                <h3>
+                  <a href="https://ku.ac.bd" target="_blank"><b>Khulna University</b></a>
+                </h3>
+              </div>
 
-        <div class="pub-group">
-          <h3>Journal Articles</h3>
-          <ul class="ul-papers">
-            <li>
-              <div class="description">
-                <p class="title">Gallstone disease classification using SLOA-optimized CatBoost classifier with explainable AI</p>
-                <p class="authors"><b>Prosenjit Das</b>, Md. Ayaj Uddin Khan, Proshenjit Sarker, Abdullah-Al Nahid</p>
-                <p class="venue">PLoS One, 2026</p>
-                <p class="resources">[ <a href="https://doi.org/10.1371/journal.pone.0342945">PDF</a> ]</p>
+              <p>
+                <a href="authors/cv/Prosenjit Das (20 January, 2026).pdf"><b>CV</b></a> |
+                <a href="https://scholar.google.com/citations?user=oZp9aysAAAAJ&hl=en" target="_blank"><b>Google Scholar</b></a> |
+                <a href="https://www.researchgate.net/profile/Prosenjit-Das-14" target="_blank"><i class="fab fa-researchgate"></i></a> |
+                <a href="https://www.linkedin.com/in/prosenjit-das-83007b252/" target="_blank"><i class="fab fa-linkedin"></i></a> |
+                <a href="https://orcid.org/0009-0006-7391-6134" target="_blank"><i class="fa fa-id-badge"></i></a>
+              </p>
+            </div>
+          </div>
+
+          <!-- BIO -->
+          <div class="col-12 col-lg-8">
+            <p>
+              I am a final-year Electronics & Communication Engineering Discipline student at
+              <a href="https://ku.ac.bd" target="_blank"><strong>Khulna University</strong></a>, Bangladesh. My interests lie in Machine Learning and Artificial Intelligence, with a focus on healthcare applications. I am currently developing my skills in Vision Transformers, Large Language Models, and Explainable AI.
+            </p>
+
+            <div class="row">
+              <div class="col-md-6">
+                <h3>Contact</h3>
+                <ul class="ul-contact fa-ul">
+                  <li>
+                    <i class="fa-li fas fa-envelope"></i>
+                    <p class="course">prosenjitdas0929@gmail.com</p>
+                  </li>
+                  <li>
+                    <i class="fa-li fas fa-map-marker"></i>
+                    <p class="course">Khulna University, Khulna-9208, Bangladesh</p>
+                  </li>
+                </ul>
               </div>
-            </li>
-            <li>
-              <div class="description">
-                <p class="title">Dengue Fever Classification Integrating Bird Swarm Algorithm with Gradient Boosting Classifier Along with Feature Selection and SHAP–DiCE Based Interpretability</p>
-                <p class="authors"><b>Prosenjit Das</b>, Proshenjit Sarker, Jun-Jiat Tiang, Abdullah-Al Nahid</p>
-                <p class="venue">Applied Sciences, Volume 15, Page 11413, MDPI, 2025</p>
-                <p class="resources">[ <a href="https://www.mdpi.com/2076-3417/15/21/11413" target="_blank">PDF</a> ]</p>
+
+              <div class="col-md-6">
+                <h3>Education</h3>
+                <ul class="ul-edu fa-ul">
+                  <li>
+                    <i class="fa-li fas fa-graduation-cap"></i>
+                    <p class="course">B.Sc. in Electronics & Communication Engineering, 2023~Present</p>
+                    <p class="institution">Khulna University, Bangladesh</p>
+                  </li>
+                </ul>
               </div>
-            </li>
-            <li>
-              <div class="description">
-                <p class="title">Aquaculture Water Quality Classification Using XGBoost Classifier Model Optimized by the Honey Badger Algorithm with SHAP and DiCE-Based Explanations</p>
-                <p class="authors">SM Naim, <b>Prosenjit Das</b>, Jun-Jiat Tiang, Abdullah-Al Nahid</p>
-                <p class="venue">Water, Volume 17, Page 2993, MDPI, 2025</p>
-                <p class="resources">[ <a href="https://www.mdpi.com/2073-4441/17/20/2993" target="_blank">PDF</a> ]</p>
-              </div>
-            </li>
-            <li>
-              <div class="description">
-                <p class="title">Breast Cancer Prediction Using Rotation Forest Algorithm Along with Finding the Influential Causes</p>
-                <p class="authors"><b>Prosenjit Das</b>, Proshenjit Sarker, Jun-Jiat Tiang, Abdullah-Al Nahid</p>
-                <p class="venue">Bioengineering, Volume 12, Page 1020, MDPI, 2025</p>
-                <p class="resources">[ <a href="https://www.mdpi.com/2306-5354/12/10/1020" target="_blank">PDF</a> ]</p>
-              </div>
-            </li>
-          </ul>
+            </div>
+          </div>
+
         </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="pub-group">
-          <h3>Conferences</h3>
-          <ul class="ul-papers">
-            <li>
-              <div class="description">
-                <p class="title">An Explainable Hybrid CNN–Vision Transformer Framework for Lung Cancer Classification on LungHist700</p>
-                <p class="authors">Tonmoy Debnath, <b>Prosenjit Das</b>, Mijanur Rahaman, Md. Bipul Hossain, Anupam Kumar Bairagi, Apurba Adhikary</p>
-                <p class="venue">QPAIN, 2026 &middot; IEEE</p>
-                <p class="resources">[ <a href="https://ieeexplore.ieee.org/document/11546498">PDF</a> ]</p>
-              </div>
-            </li>
-          </ul>
+ <!-- ================== PUBLICATIONS ================== -->
+<section id="papers" class="home-section wg-papers">
+  <div class="container">
+    <h1>Publications</h1>
+
+    <h3>Journal Articles</h3>
+    <ul class="ul-papers">
+      <li>
+        <div class="description">
+          <p class="title">
+            Gallstone disease classification using SLOA-optimized CatBoost classifier with explainable AI
+          </p>
+          <p class="authors">
+            <b>Prosenjit Das</b>, Md. Ayaj Uddin Khan, Proshenjit Sarker, Abdullah-Al Nahid
+          </p>
+          <p class="venue">
+            PLoS One, 2026
+          </p>
+          <p class="resources">
+            [ <a href="https://doi.org/10.1371/journal.pone.0342945">PDF</a> ]
+          </p>
         </div>
-
-        <div class="pub-group">
-          <h3>Preprints</h3>
-          <ul class="ul-papers">
-            <li>
-              <div class="description">
-                <p class="title">Generative AI for research: Paradigms, tasks, evaluation, and best practices</p>
-                <p class="authors">Antu Kumar Guha, <b>Prosenjit Das</b>, Amit Bala, Sabah Ummie, Muhammad Enayetur Rahman, Md Nurul Absar Siddiky, Muhammad Rezaur Rahman</p>
-                <p class="venue">Preprints, 2025</p>
-                <p class="resources">[ <a href="https://www.preprints.org/manuscript/202511.0421" target="_blank">PDF</a> ]</p>
-              </div>
-            </li>
-            <li>
-              <div class="description">
-                <p class="title">A comprehensive survey of prompt engineering techniques in large language models</p>
-                <p class="authors">Tonmoy Debnath, Md Nurul Absar Siddiky, Muhammad Enayetur Rahman, <b>Prosenjit Das</b>, Antu Kumar Guha</p>
-                <p class="venue">TechRxiv, 2025</p>
-                <p class="resources">[ <a href="https://digitalcommons.odu.edu/ece_fac_pubs/514/" target="_blank">PDF</a> ]</p>
-              </div>
-            </li>
-          </ul>
+      </li>
+      <li>
+        <div class="description">
+          <p class="title">
+            Dengue Fever Classification Integrating Bird Swarm Algorithm with Gradient Boosting Classifier Along with Feature Selection and SHAP–DiCE Based Interpretability
+          </p>
+          <p class="authors">
+            <b>Prosenjit Das</b>, Proshenjit Sarker, Jun-Jiat Tiang, Abdullah-Al Nahid
+          </p>
+          <p class="venue">
+            Applied Sciences, Volume 15, Page 11413, MDPI, 2025
+          </p>
+          <p class="resources">
+            [ <a href="https://www.mdpi.com/2076-3417/15/21/11413" target="_blank">PDF</a> ]
+          </p>
         </div>
-
-        <div class="pub-group">
-          <h3>Datasets</h3>
-          <ul class="ul-papers">
-            <li>
-              <div class="description">
-                <p class="title">KU-Bangla: A Comprehensive Bangla Dataset for Language Modeling and Translation</p>
-                <p class="authors">Nasif Ahmed, Khandaker Rifat, <b>Prosenjit Das</b>, Mainul Islam Labib, Abdullah-Al Nahid</p>
-                <p class="venue">Mendeley Data, Version 1, 2026</p>
-                <p class="resources">[ <a href="https://data.mendeley.com/datasets/kbhwt5kjkm/1" target="_blank">Dataset</a> | <a href="https://doi.org/10.17632/kbhwt5kjkm.1" target="_blank">DOI</a> ]</p>
-              </div>
-            </li>
-            <li>
-              <div class="description">
-                <p class="title">KU-BD-Fish: High-Resolution White-Background and Segmented Images for Species Classification</p>
-                <p class="authors">Naim SM, Md Ashikkur Rahman, <b>Prosenjit Das</b>, Abdullah-Al Nahid</p>
-                <p class="venue">Mendeley Data, Version 3, 2025</p>
-                <p class="resources">[ <a href="https://data.mendeley.com/datasets/n9m5bywxwc/2" target="_blank">Dataset</a> | <a href="https://doi.org/10.17632/n9m5bywxwc.2" target="_blank">DOI</a> ]</p>
-              </div>
-            </li>
-          </ul>
+      </li>
+      <li>
+        <div class="description">
+          <p class="title">
+            Aquaculture Water Quality Classification Using XGBoost Classifier Model Optimized by the Honey Badger Algorithm with SHAP and DiCE-Based Explanations
+          </p>
+          <p class="authors">
+            SM Naim, <b>Prosenjit Das</b>, Jun-Jiat Tiang, Abdullah-Al Nahid
+          </p>
+          <p class="venue">
+            Water, Volume 17, Page 2993, MDPI, 2025
+          </p>
+          <p class="resources">
+            [ <a href="https://www.mdpi.com/2073-4441/17/20/2993" target="_blank">PDF</a> ]
+          </p>
         </div>
-
-        <div class="pub-group">
-          <h3>In Progress (Journal & Conference)</h3>
-          <ul class="ul-papers">
-            <li>
-              <div class="description">
-                <p class="title">Feature Selection and Hyperparameter Optimization of XGBoost Classifier Using MGO Algorithm for Gallstone Disease Classification with SHAP-Based Explanations</p>
-                <p class="venue">Venue: Pending</p>
-                <p class="status">Journal Paper &nbsp;&middot;&nbsp; <span class="under-review">Waiting for submission</span></p>
-              </div>
-            </li>
-            <li>
-              <div class="description">
-                <p class="title">Optimized Machine Learning Framework for Lifestyle and Dietary-Based Type 2 Diabetes Risk Prediction</p>
-                <p class="venue">International Conference on Control, Automation and Diagnosis (ICCAD, 2026)</p>
-                <p class="status">Conference Paper &nbsp;&middot;&nbsp; <span class="submitted" style="background:var(--gold-soft); color:var(--gold);">Accepted</span></p>
-              </div>
-            </li>
-            <li>
-              <div class="description">
-                <p class="title">An Optimization-Driven and Interpretable Ensemble Learning Framework for Stethoscope-Based Lung Sound Classification</p>
-                <p class="venue">International Conference on Signal Processing, Information, Communication and Systems (SPICSCON, 2026)</p>
-                <p class="status">Conference Paper &nbsp;&middot;&nbsp; <span class="submitted">Submitted</span></p>
-              </div>
-            </li>
-            <li>
-              <div class="description">
-                <p class="title">Aquaculture Water Quality Classification Using SLO-Optimized XGBoost with Explainable AI</p>
-                <p class="venue">International Conference on Signal Processing, Information, Communication and Systems (SPICSCON, 2026)</p>
-                <p class="status">Conference Paper &nbsp;&middot;&nbsp; <span class="submitted">Submitted</span></p>
-              </div>
-            </li>
-          </ul>
+      </li>
+      <li>
+        <div class="description">
+          <p class="title">
+            Breast Cancer Prediction Using Rotation Forest Algorithm Along with Finding the Influential Causes
+          </p>
+          <p class="authors">
+            <b>Prosenjit Das</b>, Proshenjit Sarker, Jun-Jiat Tiang, Abdullah-Al Nahid
+          </p>
+          <p class="venue">
+            Bioengineering, Volume 12, Page 1020, MDPI, 2025
+          </p>
+          <p class="resources">
+            [ <a href="https://www.mdpi.com/2306-5354/12/10/1020" target="_blank">PDF</a> ]
+          </p>
         </div>
-      </section>
+      </li>
 
-      <!-- SKILLS -->
-      <section id="skills" class="home-section wg-blank">
-        <h1>Skills</h1>
-        <ul>
-          <li><strong>Programming &amp; AI/ML</strong> — Python, C, C++, MATLAB, Machine Learning</li>
-          <li><strong>Office &amp; Productivity</strong> — Microsoft Word, PowerPoint, Excel</li>
-          <li><strong>Writing Tools</strong> — LaTeX</li>
-        </ul>
-      </section>
+    </ul>
 
-      <!-- AWARDS -->
-      <section id="awards" class="home-section wg-blank">
-        <h1>Awards &amp; Honors</h1>
-        <ul>
-          <li><strong>1st Runner-Up</strong> — ML Blitz Competition <em>(Organized by IEEE KU Branch)</em></li>
-          <li><strong>University Merit Scholarship</strong>, Khulna University (2025) — Awarded for achieving a CGPA of <strong>3.88 / 4.00</strong> <em>(Top 3 in the Discipline)</em></li>
-        </ul>
-      </section>
+    <h3>Conferences</h3>
+    <ul class="ul-papers">
+      <li>
+        <div class="description">
+          <p class="title">
+            An Explainable Hybrid CNN–Vision Transformer Framework for Lung Cancer Classification on LungHist700
+          </p>
+          <p class="authors">
+            Tonmoy Debnath, <b>Prosenjit Das</b>, Mijanur Rahaman, Md. Bipul Hossain, Anupam Kumar Bairagi, Apurba Adhikary
+          </p>
+          <p class="venue">
+            QPAIN, 2026
+          </p>
+          <p class="venue">
+            Publisher: IEEE
+          </p>
+          <p class="resources">
+            [ <a href="https://ieeexplore.ieee.org/document/11546498">PDF</a> ]
+          </p>
+        </div>
+      </li>
 
-    </main>
+      </ul>
 
-    <footer class="site-footer">
-      <p>© Prosenjit Das</p>
-    </footer>
+    <h3>Preprints</h3>
+    <ul class="ul-papers">
+      <li>
+        <div class="description">
+          <p class="title">
+            Generative AI for research: Paradigms, tasks, evaluation, and best practices
+          </p>
+          <p class="authors">
+            Antu Kumar Guha, <b>Prosenjit Das</b>, Amit Bala, Sabah Ummie, Muhammad Enayetur Rahman, Md Nurul Absar Siddiky, Muhammad Rezaur Rahman
+          </p>
+          <p class="venue">
+            Preprints, 2025
+          </p>
+          <p class="resources">
+            [ <a href="https://www.preprints.org/manuscript/202511.0421" target="_blank">PDF</a> ]
+          </p>
+        </div>
+      </li>
+
+      <li>
+        <div class="description">
+          <p class="title">
+            A comprehensive survey of prompt engineering techniques in large language models
+          </p>
+          <p class="authors">
+            Tonmoy Debnath, Md Nurul Absar Siddiky, Muhammad Enayetur Rahman, <b>Prosenjit Das</b>, Antu Kumar Guha
+          </p>
+          <p class="venue">
+            TechRxiv, 2025
+          </p>
+          <p class="resources">
+            [ <a href="https://digitalcommons.odu.edu/ece_fac_pubs/514/" target="_blank">PDF</a> ]
+          </p>
+        </div>
+      </li>
+    </ul>
+
+    <h3>Datasets</h3>
+<ul class="ul-papers">
+  <li>
+    <div class="description">
+      <p class="title">
+        KU-Bangla: A Comprehensive Bangla Dataset for Language Modeling and Translation
+      </p>
+      <p class="authors">
+        Nasif Ahmed, Khandaker Rifat, <b>Prosenjit Das</b>, Mainul Islam Labib, Abdullah-Al Nahid
+      </p>
+      <p class="venue">
+        Mendeley Data, Version 1, 2026
+      </p>
+      <p class="resources">
+        [ 
+        <a href="https://data.mendeley.com/datasets/kbhwt5kjkm/1" target="_blank">Dataset</a> |
+        <a href="https://doi.org/10.17632/kbhwt5kjkm.1" target="_blank">DOI</a>
+        ]
+      </p>
+    </div>
+  </li>
+
+   <li>
+    <div class="description">
+      <p class="title">
+        KU-BD-Fish: High-Resolution White-Background and Segmented Images for Species Classification
+      </p>
+      <p class="authors">
+        Naim SM, Md Ashikkur Rahman, <b>Prosenjit Das</b>, Abdullah-Al Nahid
+      </p>
+      <p class="venue">
+        Mendeley Data, Version 3, 2025
+      </p>
+      <p class="resources">
+        [ 
+        <a href="https://data.mendeley.com/datasets/n9m5bywxwc/2" target="_blank">Dataset</a> |
+        <a href="https://doi.org/10.17632/n9m5bywxwc.2" target="_blank">DOI</a>
+        ]
+      </p>
+    </div>
+  </li>
+</ul>
+
+    <h3>Processing (Journal & Conference)</h3>
+<ul class="ul-papers">
+
+  <!-- Journal Paper -->
+
+  <li>
+    <div class="description">
+      <p class="title">
+        Feature Selection and Hyperparameter Optimization of XGBoost Classifier Using MGO Algorithm for Gallstone Disease Classification with SHAP-Based Explanations
+      </p>
+      <p class="venue">
+        Venue: Pending
+      </p>
+      <p class="status">
+        Type: Journal Paper <br>
+        Status: <span class="under-review">Waiting for Submission</span>
+      </p>
+    </div>
+  </li>
+
+  <!-- Conference Paper -->
+  <li>
+    <div class="description">
+      <p class="title">
+        Optimized Machine Learning Framework for Lifestyle and Dietary-Based Type 2 Diabetes Risk Prediction
+      </p>
+      <p class="venue">
+        Venue: International Conference on Control, Automation and Diagnosis (ICCAD, 2026)
+      </p>
+      <p class="status">
+        Type: Conference Paper <br>
+        Status: <span class="submitted">Accepted</span>
+      </p>
+    </div>
+  </li>
+
+  <li>
+    <div class="description">
+      <p class="title">
+        An Optimization-Driven and Interpretable Ensemble Learning Framework for Stethoscope-Based Lung Sound Classification
+      </p>
+      <p class="venue">
+        Venue: International Conference on Signal Processing, Information, Communication and Systems (SPICSCON,2026)
+      </p>
+      <p class="status">
+        Type: Conference Paper <br>
+        Status: <span class="submitted">Submitted</span>
+      </p>
+    </div>
+  </li>
+
+  <li>
+    <div class="description">
+      <p class="title">
+        Aquaculture Water Quality Classification Using SLO-Optimized XGBoost with Explainable AI
+      </p>
+      <p class="venue">
+        Venue: International Conference on Signal Processing, Information, Communication and Systems (SPICSCON,2026)
+      </p>
+      <p class="status">
+        Type: Conference Paper <br>
+        Status: <span class="submitted">Submitted</span>
+      </p>
+    </div>
+  </li>
+
+
+</ul>
+
 
   </div>
+</section>
 
+
+  <!-- ================== ACTIVITIES ================== -->
+  <!--<section id="activities" class="home-section wg-blank">
+    <div class="container">
+      <h1>Academic Activities</h1>
+      <ul>
+        <li>Research Intern, ABC Lab (2025)</li>
+        <li>Machine Learning Project (2024)</li>
+      </ul>
+    </div>
+  </section>-->
+
+  <!-- ================== Skills ================== -->
+  <section id="skills" class="home-section wg-blank">
+  <div class="container">
+    <h1>Skills</h1>
+    <ul>
+      <li><strong>Programming & AI/ML:</strong> Python, C, C++, MATLAB, Machine Learning</li>
+      <li><strong>Office & Productivity:</strong> Microsoft Word, PowerPoint, Excel</li>
+      <li><strong>Writing Tools:</strong> LaTeX</li>
+    </ul>
+  </div>
+</section>
+
+
+  <!-- ================== AWARDS ================== -->
+  <section id="awards" class="home-section wg-blank">
+    <div class="container">
+      <h1>Awards & Honors</h1>
+      <ul>
+        <li><strong>1st Runner-Up</strong> — ML Blitz Competition<em>(Organized by IEEE KU Branch)</em></li>
+        <li><strong>University Merit Scholarship</strong>, Khulna University (2025)<br>Awarded for achieving a CGPA of <strong>3.88 / 4.00</strong> (<em>Top 3 in the Discipline</em>).</li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================== FOOTER ================== -->
+  <footer class="site-footer">
+    <p class="powered-by">© Prosenjit Das</p>
+  </footer>
+
+  <!-- JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </body>
 </html>
